@@ -32,6 +32,7 @@ Users should be able to:
 - Flexbox and Grid.
 - [React](https://reactjs.org) - JS library.
 - [React Router](https://reactrouter.com) - React library
+- [Redex Toolkit](https://redux-toolkit.js.org) - State Manager
 
 ### Immediate Future Improvements
 
