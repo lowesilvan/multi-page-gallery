@@ -3,7 +3,6 @@ import {
   Button,
   FormControl,
   FormLabel,
-  Heading,
   HStack,
   VStack,
   Image,
@@ -12,22 +11,30 @@ import {
   Text,
   Textarea,
   FormErrorMessage,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { uniqueId } from "lodash";
-import { createCollection } from "../../redux/collectionReducer/collectionSlice";
+import { createCollection } from "../../../redux/collectionReducer/collectionSlice";
+import { v4 as uuidv4 } from "uuid";
 
-function AddNewCollection({ photos }) {
+function AddNewCollection() {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
+
   //Form States
   const [name, setName] = useState("");
   const [describe, setDescribe] = useState("");
   const [imageUpload, setImageUpload] = useState([]);
   const [isError, setIsError] = useState(false);
+  // const [formData, setFormData] = useState({
+  //   id: uniqueId(),
+  //   name: '',
+  //   description: '',
+  //   photos: []
+  // })
 
   //Form Submit onclick function
   const handleSubmit = (e) => {
@@ -35,19 +42,19 @@ function AddNewCollection({ photos }) {
       return setIsError(true);
     } else if (describe === "") {
       return setIsError(true);
-    } else if (imageUpload === [""]) {
+    } else if (imageUpload.length === 0) {
       return setIsError(true);
     } else {
-      console.log('1')
+      console.log("1");
       dispatch(
         createCollection({
-          id: uniqueId(),
+          id: uuidv4(),
           name: name,
           description: describe,
           photos: imageUpload,
         })
       );
-      console.log('2')
+      console.log("2");
       Navigate("/all-collections");
     }
     setIsError(false);
@@ -70,21 +77,36 @@ function AddNewCollection({ photos }) {
   // preview image
   const renderPhotos = (source) => {
     // console.log("source: ", source);
-    return source.map((photo, index) => {
+    return source.map((photo) => {
       return (
         <VStack spacing={3}>
-          <Image marginTop="2rem" src={photo} alt={name} key={index} />
+          <Image marginTop="2rem" src={photo} alt={name} key={photo} w="200" />
         </VStack>
       );
     });
   };
 
   return (
-    <Box position="relative" top="5rem" p="1rem" textAlign="center" m="auto">
-      <Heading p="2">Add New Collection</Heading>
-      <FormControl isInvalid={isError} p="1rem" w="600px" m="auto">
+    <Box
+      position="relative"
+      p={"1rem"}
+      textAlign={"center"}
+      m={"auto"}
+      marginBottom="1rem"
+    >
+      <FormControl
+        isInvalid={isError}
+        p="1rem"
+        paddingY="2rem"
+        w="100%"
+        maxWidth="600px"
+        m="auto"
+        bg={useColorModeValue("gray.50", "gray.900")}
+        borderRadius={20}
+        shadow={'lg'}
+      >
         <Stack spacing={5} padding="1rem">
-          <Box>
+          <Box marginY="10px">
             <FormLabel htmlFor="name">Name</FormLabel>
             <Input
               id="name"
@@ -111,10 +133,10 @@ function AddNewCollection({ photos }) {
               <FormErrorMessage>Description required</FormErrorMessage>
             )}
           </Box>
-          <Box>
+          <Box paddingY="1rem">
             <FormLabel htmlFor="upload" cursor="pointer">
               <HStack>
-                <Text>Upload Images</Text> <FiUpload />
+                <Text>Upload Image(s)</Text> <FiUpload />
               </HStack>
             </FormLabel>
             <Input

@@ -1,4 +1,4 @@
-import { Flex, useColorModeValue } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 const NavBarContainer = ({ children, ...props }) => {
   return (
@@ -9,9 +9,7 @@ const NavBarContainer = ({ children, ...props }) => {
       wrap="wrap"
       w="100%"
       p={5}
-      position="absolute"
       {...props}
-      // bg={useColorModeValue('white')}
     >
       {children}
     </Flex>

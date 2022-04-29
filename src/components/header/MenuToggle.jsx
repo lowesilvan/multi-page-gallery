@@ -4,7 +4,7 @@ import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 
 function MenuToggle({ toggle, isOpen }) {
   return (
-    <Box display={{ base: "block", md: "none" }} onClick={toggle}>
+    <Box display={{ base: "block", lg: "none" }} onClick={toggle}>
       {isOpen ? <CloseIcon w={6} h={6} /> : <HamburgerIcon w={8} h={8} />}
     </Box>
   );

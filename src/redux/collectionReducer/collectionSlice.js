@@ -3,48 +3,38 @@ import { createSlice } from "@reduxjs/toolkit";
 export const collectionSlice = createSlice({
   name: "collection",
   initialState: {
-    album: [
-      {
-        id: "1",
-        name: "Vacation",
-        description: "My honeymoon vacation",
-        photos: [
-          "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg",
-        ],
-      },
-      {
-        id: "2",
-        name: "Vacation",
-        description: "My honeymoon vacation",
-        photos: [
-          "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg",
-        ],
-      },
-      {
-        id: "3",
-        name: "Vacation",
-        description: "My honeymoon vacation",
-        photos: [
-          "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg",
-        ],
-      },
-    ],
+    album: localStorage.getItem("collections")
+      ? JSON.parse(localStorage.getItem("collections"))
+      : [],
   },
 
   reducers: {
     createCollection: (state, action) => {
       state.album.push(action.payload);
+      localStorage.setItem("collections", JSON.stringify(state.album));
     },
 
     deleteCollection: (state, action) => {
-      return state.album.filter((foto) => foto.id !== action.payload);
+      state.album = state.album.filter((foto) => foto.id !== action.payload);
+      localStorage.setItem("collections", JSON.stringify(state.album));
     },
 
-    updateCollection: () => {},
+    updateCollection: (state, action) => {
+      state.album.map((foto) => {
+        if (foto.id === action.payload.id) {
+          foto.name = action.payload.name;
+          foto.description = action.payload.description;
+          foto.photos = action.payload.photos;
+          console.log(foto.name);
+        }
+        return null;
+      });
+      localStorage.setItem("collections", JSON.stringify(state.album));
+    },
   },
 });
 
-export const {createCollection, deleteCollection } =
+export const { createCollection, deleteCollection, updateCollection } =
   collectionSlice.actions;
 
 export default collectionSlice.reducer;

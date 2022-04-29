@@ -6,9 +6,14 @@ import ToggleThemeMode from './ToggleThemeMode'
 const MenuLinks = ({isOpen}) => {
     return (
       <Box
-        display={{ base: isOpen ? "block" : "none", md: "block" }}
-        flexBasis={{ base: "100%", md: "auto" }}
+        display={{
+          base: isOpen ? "block" : "none",
+          md: isOpen ? "block" : "none",
+          lg: "block",
+        }}
+        flexBasis={{ base: "100%", lg: "auto" }}
         px={2}
+        bg={{ bg: useColorModeValue("gray.500") }}
       >
         <Stack
           spacing={8}
@@ -18,13 +23,16 @@ const MenuLinks = ({isOpen}) => {
           pt={[4, 4, 0, 0]}
         >
           <Link to="/home">
-            <Text>Home</Text>
+            <Text fontWeight="semibold" _hover={{ color: "gray.500" }}>
+              Home
+            </Text>
           </Link>
           <Link
             to="/all-collections"
-            _hover={{ bg: useColorModeValue("gray.500") }}
           >
-            <Text>All Collections</Text>
+            <Text fontWeight="semibold" _hover={{ color: "gray.500" }}>
+              All Collections
+            </Text>
           </Link>
           <AddNewCollectionButton />
           <ToggleThemeMode />
