@@ -38,10 +38,11 @@ Users should be able to:
 
 - Add Loading icons to buttons
 - Add active states on NavLink
+- Add more collection feature
 
 ### More about me
 
-- Frontend Mentor - [@lowesilvan](https://www.frontendmentor.io/profile/lowesilvan)
 - LinkedIn - [@dt_lowe](https://www.linkedin.com/in/lowesilvan/)
+- Frontend Mentor - [@lowesilvan](https://www.frontendmentor.io/profile/lowesilvan)
 
 ```
