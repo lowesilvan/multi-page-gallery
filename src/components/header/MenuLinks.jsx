@@ -1,5 +1,5 @@
 import { Box, Stack, Text, useColorModeValue} from "@chakra-ui/react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import AddNewCollectionButton from "./AddNewCollectionButton"
 import ToggleThemeMode from './ToggleThemeMode'
 
@@ -22,18 +22,28 @@ const MenuLinks = ({isOpen}) => {
           direction={["column", "column", "row", "row"]}
           pt={[4, 4, 0, 0]}
         >
-          <Link to="/home">
+          <NavLink
+            to="/home"
+            style={({ isActive }) => ({
+              color: isActive ? "Green" : "inherit",
+              // background: isActive ? "#E2E8F0" : "inherit",
+            })}
+          >
             <Text fontWeight="semibold" _hover={{ color: "gray.500" }}>
               Home
             </Text>
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/all-collections"
+            style={({ isActive }) => ({
+              color: isActive ? "green" : "inherit",
+              // background: isActive ? "#E2E8F0" : "inherit",
+            })}
           >
             <Text fontWeight="semibold" _hover={{ color: "gray.500" }}>
               All Collections
             </Text>
-          </Link>
+          </NavLink>
           <AddNewCollectionButton />
           <ToggleThemeMode />
         </Stack>

@@ -1,6 +1,7 @@
 import { Box, Heading, SimpleGrid, VStack} from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
+import AddCollectionBox from "../../404 Page/AddCollectionBox/AddCollectionBox";
 import RenderPhotos from "./RenderPhotos";
 
 function AllCollections() {
@@ -13,7 +14,7 @@ function AllCollections() {
       <Box>
         {album.length > 0 ? <Heading as="h1" size="2xl">
           All Collections
-        </Heading> : "No Collection."}
+        </Heading> : <AddCollectionBox />}
       </Box>
       <Box>
         <SimpleGrid
@@ -28,6 +29,7 @@ function AllCollections() {
             album.map((albom) => {
               return <RenderPhotos albom={albom} key={albom.id} />;
             })}
+            <AddCollectionBox />
         </SimpleGrid>
       </Box>
     </VStack>

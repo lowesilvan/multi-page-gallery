@@ -33,7 +33,7 @@ function Footer() {
                 <Heading>Gallery</Heading>
               </Box>
               <Text fontSize={"sm"}>
-                © 2022 Chakra Templates. All rights reserved
+                © 2022 All rights reserved
               </Text>
               <Stack direction={"row"} spacing={6}>
                 <SocialButton label={"Twitter"} href={"#"}>
