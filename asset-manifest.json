@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/multi-page-gallery/static/js/main.33692803.js",
+    "main.js": "/multi-page-gallery/static/js/main.2955e123.js",
     "index.html": "/multi-page-gallery/index.html",
-    "main.33692803.js.map": "/multi-page-gallery/static/js/main.33692803.js.map"
+    "main.2955e123.js.map": "/multi-page-gallery/static/js/main.2955e123.js.map"
   },
   "entrypoints": [
-    "static/js/main.33692803.js"
+    "static/js/main.2955e123.js"
   ]
 }
